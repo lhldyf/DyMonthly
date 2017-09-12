@@ -23,6 +23,7 @@ public class FileUtils {
         File[] files = dir.listFiles(); // 该文件目录下文件全部放入数组
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
+                int j = 0; // 打印出一个文件夹下有两个Excel的文件夹路径
                 String fileName = files[i].getName();
                 if (files[i].isDirectory()) { // 判断是文件还是文件夹
                     getFilePathList(files[i].getAbsolutePath(), false); // 获取文件绝对路径
@@ -34,6 +35,9 @@ public class FileUtils {
                     }
                     //System.out.println("---" + strFileName);
                     filePathlist.add(strFileName);
+                    if(j++ == 2) {
+                        System.out.println("这个excel文件所在目录下面有两个Excel，请确认。 文件："+strFileName);
+                    }
                 } else {
                     continue;
                 }
